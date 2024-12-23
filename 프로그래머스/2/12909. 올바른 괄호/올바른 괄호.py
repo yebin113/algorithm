@@ -1,15 +1,18 @@
 def solution(s):
-    stack = []
-    
+    answer = True
+    if s[-1] == "(" or s[0] == ")":
+        return False
+    open = 0
     for i in range(len(s)):
         if s[i] == "(":
-            stack.append(s[i])
+            open += 1
         else:
-            if len(stack) and stack[-1] == "(":
-                stack.pop()
-            else:
-                return False
-    if len(stack):
+            open -= 1
+        if open < 0:
+            
+            return False
+    
+    if open == 0:
+        return True
+    else:
         return False
-
-    return True
